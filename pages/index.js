@@ -9,7 +9,7 @@ export default function Home(props) {
      <List>
         {props.movies.map((movie) => (
           <ListItem disablePadding key={movie.id}>
-            <ListItemButton>
+            <ListItemButton component="a" href={`/movies/${movie.id}`}>
               <ListItemIcon>
                 <MovieIcon />
               </ListItemIcon>

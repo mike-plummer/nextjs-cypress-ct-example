@@ -1,6 +1,8 @@
 import { getById } from "../../../apis/movies"
 
 export default async function handler(req, res) {
+  console.log('API fetch by ID')
+  
   const { movieId } = req.query
   const idAsNumber = Number(movieId)
 

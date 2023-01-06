@@ -1,25 +1,46 @@
+import { useState, useCallback } from 'react'
 import styles from "../styles/Home.module.css";
-import { Container, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import MovieIcon from '@mui/icons-material/LocalMovies';
+import { useRouter } from 'next/router'
+import { Container, Button, TextField, InputAdornment, Link } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 import { getAll } from "../apis/movies";
 
 export default function Home(props) {
- return (
-   <Container className={styles.container}>
-     <List>
-        {props.movies.map((movie) => (
-          <ListItem disablePadding key={movie.id}>
-            <ListItemButton component="a" href={`/movies/${movie.id}`}>
-              <ListItemIcon>
-                <MovieIcon />
-              </ListItemIcon>
-              <ListItemText primary={movie.Title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-   </Container>
- );
+  const router = useRouter()
+  const [searchValue, setSearchValue] = useState('')
+  const handleSearch = useCallback(async (evt) => {
+    evt.preventDefault()
+    await router.push({
+      pathname: '/movies/search',
+      query: {
+        title: searchValue
+      }
+    })
+    return false
+  }, [router, searchValue])
+  
+  return (
+    <Container className={styles.container}>
+      <form onSubmit={handleSearch} action="">
+        <TextField
+          label="Search"
+          variant="outlined"
+          value={searchValue}
+          onChange={(evt) => setSearchValue(evt.currentTarget.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Button variant="contained" type="submit">Search</Button>
+      </form>
+
+      <Link href="/movies/list">List All</Link>
+    </Container>
+  );
 }
 
 export async function getStaticProps() {

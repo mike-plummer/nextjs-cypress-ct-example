@@ -11,3 +11,9 @@ export async function getById(id) {
 
     return Data.movies.find((movie) => movie.id === id)
 }
+
+export async function search(title) {
+    console.log('DB search by title')
+
+    return Data.movies.filter((movie) => movie.Title.toLowerCase().includes(title.toLowerCase()))
+}

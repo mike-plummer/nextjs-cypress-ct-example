@@ -1,13 +1,14 @@
-import Data from './movies.json'
+import { getById } from "../../../apis/movies"
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const { movieId } = req.query
+  const idAsNumber = Number(movieId)
 
-  if (Number.isNaN(Number(movieId))) {
+  if (Number.isNaN(idAsNumber)) {
     res.status(400).end()
   }
 
-  const movie = Data.movies.find((movie) => movie.id === Number(movieId))
+  const movie = await getById(idAsNumber)
   if (movie) {
     res.status(200).json(movie)
   } else {

@@ -1,9 +1,10 @@
-import { Button, Container, Divider, Typography } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import { getAll, getById } from "../../apis/movies";
 import LeftChevron from "@mui/icons-material/ChevronLeft"
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
+import MovieDetail from "../../components/MovieDetail";
 
-export default function MovieDetail(props) {
+export default function MovieDetailPage(props) {
   const router = useRouter()
 
   return (
@@ -12,17 +13,7 @@ export default function MovieDetail(props) {
         Back
     </Button>
 
-    <Typography variant="h6">Title</Typography>
-    <Divider />
-    <Typography>{props.movie.Title}</Typography>
-     
-    <Typography variant="h6">Year</Typography>
-    <Divider />
-    <Typography>{props.movie.Year}</Typography>
-
-    <Typography variant="h6">Plot</Typography>
-    <Divider />
-    <Typography>{props.movie.Plot}</Typography>
+    <MovieDetail movie={props.movie} />
    </Container>
  );
 }

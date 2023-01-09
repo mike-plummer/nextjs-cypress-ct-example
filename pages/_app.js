@@ -1,5 +1,6 @@
 import '../styles/globals.css'
-import { ThemeProvider, AppBar, Container, Toolbar, Typography } from "@mui/material";
+import { ThemeProvider, AppBar, Container, Toolbar } from "@mui/material";
+import Logo from '../components/Logo';
 import { theme } from "../theme";
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from '../createEmotionCache';
@@ -17,23 +18,7 @@ export default function App({
         <AppBar position="static">
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <Typography
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  mr: 2,
-                  display: { xs: 'none', md: 'flex' },
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  letterSpacing: '.3rem',
-                  color: 'inherit',
-                  textDecoration: 'none',
-                }}
-              >
-                Cypress 80's Throwback
-              </Typography>
+              <Logo />
             </Toolbar>
           </Container>
         </AppBar>

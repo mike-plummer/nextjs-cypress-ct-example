@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 import { getAll } from "../../apis/movies";
 import MovieList from "../../components/MovieList";
 
-export default function List(props) {
+export default function MoviesListPage(props) {
  return (
    <Container>
      <MovieList movies={props.movies} />

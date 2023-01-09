@@ -1,42 +1,21 @@
-import { useState, useCallback } from 'react'
 import styles from "../styles/Home.module.css";
-import { useRouter } from 'next/router'
-import { Container, Button, TextField, InputAdornment, Link } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import { Box, Container, Link, Typography } from "@mui/material";
 import { getAll } from "../apis/movies";
+import SearchForm from '../components/SearchForm';
+import { useSearch } from '../hooks/search';
 
-export default function Home(props) {
-  const router = useRouter()
-  const [searchValue, setSearchValue] = useState('')
-  const handleSearch = useCallback(async (evt) => {
-    evt.preventDefault()
-    await router.push({
-      pathname: '/movies/search',
-      query: {
-        title: searchValue
-      }
-    })
-    return false
-  }, [router, searchValue])
+export default function HomePage(props) {
+  const onSearch = useSearch()
   
   return (
     <Container className={styles.container}>
-      <form onSubmit={handleSearch} action="">
-        <TextField
-          label="Search"
-          variant="outlined"
-          value={searchValue}
-          onChange={(evt) => setSearchValue(evt.currentTarget.value)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-        <Button variant="contained" type="submit">Search</Button>
-      </form>
+      <Typography>
+        This is a super-awesome demo Next.js app to show off ways to test various portions of Next using Cypress.
+      </Typography>
+
+      <Box py={2}>
+        <SearchForm onSearch={onSearch} />
+      </Box>
 
       <Link href="/movies/list">List All</Link>
     </Container>

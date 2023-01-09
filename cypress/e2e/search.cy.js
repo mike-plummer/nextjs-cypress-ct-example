@@ -1,6 +1,11 @@
 /*
 This test validates the Search capability, including its use of `getServerSideProps`
 This has to be an E2E test since the data hook does not execute in component tests
+
+Next.js concepts tested here:
+* Page
+* getServerSideProps
+
 */
 
 describe('search', () => {

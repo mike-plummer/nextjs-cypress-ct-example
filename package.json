@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:coverage": "npx nyc --silent npm run dev"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -20,7 +21,9 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.10.0",
     "cypress": "^12.3.0",
-    "cypress-plugin-api": "^2.9.0"
+    "cypress-plugin-api": "^2.9.0",
+    "swc-plugin-coverage-instrument": "^0.0.14"
   }
 }

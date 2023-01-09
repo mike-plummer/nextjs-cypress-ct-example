@@ -5,15 +5,15 @@ export default function MovieDetail(props) {
         <Box>
             <Typography variant="h6">Title</Typography>
             <Divider />
-            <Typography>{props.movie.Title}</Typography>
+            <Typography data-cy="movie-title">{props.movie.Title}</Typography>
 
             <Typography variant="h6">Year</Typography>
             <Divider />
-            <Typography>{props.movie.Year}</Typography>
+            <Typography data-cy="movie-year">{props.movie.Year}</Typography>
 
             <Typography variant="h6">Plot</Typography>
             <Divider />
-            <Typography>{props.movie.Plot}</Typography>
+            <Typography data-cy="movie-plot">{props.movie.Plot}</Typography>
         </Box>
     )
 }

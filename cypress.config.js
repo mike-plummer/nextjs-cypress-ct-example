@@ -6,6 +6,10 @@ module.exports = defineConfig({
       framework: "next",
       bundler: "webpack",
     },
+    setupNodeEvents: (on, config) => {
+      require('@cypress/code-coverage/task')(on, config)
+      return config
+    },
   },
   e2e: {
     baseUrl: 'http://localhost:3000',

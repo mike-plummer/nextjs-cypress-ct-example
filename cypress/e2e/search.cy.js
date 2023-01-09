@@ -34,4 +34,10 @@ describe('search', () => {
 
     cy.get('[data-cy^="movie-list-item"]').should('have.length', 4)
   })
+
+  it('handles no search input', () => {
+    cy.get('button').click()
+
+    cy.get('[data-cy^="movie-list-item"]').should('not.exist')
+  })
 })

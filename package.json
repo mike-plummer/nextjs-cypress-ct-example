@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "dev:coverage": "npx nyc --silent npm run dev"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

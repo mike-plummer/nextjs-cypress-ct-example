@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 export default async function handler(req, res) {
   console.log('Retrieve server-side coverage data')
 

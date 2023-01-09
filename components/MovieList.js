@@ -5,7 +5,7 @@ export default function MovieList(props) {
   return (
     <List>
         {props.movies.map((movie) => (
-          <ListItem disablePadding key={movie.id}>
+          <ListItem disablePadding key={movie.id} data-cy={`movie-list-item-${movie.id}`}>
             <ListItemButton component="a" href={`/movies/${movie.id}`}>
               <ListItemIcon>
                 <MovieIcon />

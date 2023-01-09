@@ -1,3 +1,11 @@
+/*
+This test validates the Next.js-defined API paths
+
+Next.js concepts tested here:
+* API paths
+
+*/
+
 describe('Movies API', () => {
   describe('getAll', () => {
     it('retrieves all data', () => {

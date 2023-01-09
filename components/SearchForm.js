@@ -13,6 +13,7 @@ export default function SearchForm(props) {
   return (
     <form onSubmit={handleSearch} action="">
       <TextField
+        data-cy="search-field"
         label="Search"
         variant="outlined"
         value={title}

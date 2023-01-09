@@ -20,6 +20,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "cypress": "^12.3.0"
+    "cypress": "^12.3.0",
+    "cypress-plugin-api": "^2.9.0"
   }
 }

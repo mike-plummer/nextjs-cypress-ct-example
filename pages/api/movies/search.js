@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     res.status(400).end()
   } else {
     const movies = await search(title)
-    if (movies) {
+    if (movies.length) {
       res.status(200).json(movies)
     } else {
       res.status(204).end()

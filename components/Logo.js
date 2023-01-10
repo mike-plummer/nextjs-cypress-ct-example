@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Logo() {
     return (
         <Box display="flex" flexDirection="row" alignItems="center">
-            <Image src="/cypress-logo.svg" height={40} width={40} />
+            <Image src="/cypress-logo.png" height={40} width={40} />
             <Typography
                 variant="h6"
                 noWrap

@@ -2,10 +2,15 @@ import { Box, Container } from "@mui/material";
 import { getAll, getById } from "../../apis/movies";
 import MovieDetail from "../../components/MovieDetail";
 import BackButton from '../../components/BackButton'
+import Head from "next/head";
 
 export default function MovieDetailPage(props) {
   return (
     <Container>
+      <Head>
+        <title>Movie Details</title>
+      </Head>
+
       <BackButton />
 
       <Box py={2}>

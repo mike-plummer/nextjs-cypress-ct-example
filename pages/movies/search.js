@@ -1,10 +1,14 @@
 import { Container, Typography } from "@mui/material";
-import { search } from "../../apis/movies";
 import MovieList from "../../components/MovieList";
+import Head from "next/head";
 
 export default function MovieSearchResultsPage(props) {
  return (
    <Container>
+      <Head>
+        <title>Search Results</title>
+      </Head>
+
      <Typography>Search results for "{props.searchValue}"</Typography>
      <MovieList movies={props.movies} />
    </Container>

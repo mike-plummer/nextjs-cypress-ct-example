@@ -12,4 +12,4 @@ See `stubbing out 'useRouter' hook` in `BackButton.cy.js`
 
 `useRouter` simply searches up the React stack to find a router provider - by building our own with a mocked router implementation we can inspect functions on the router itself for test assertions.
 
-See `use mock router implementation` in `BackButton.cy.js` and the custom `mountWithRouter` command in `/cypress/support/component.js`
+See `use mock router implementation` in `BackButton.cy.js` and the custom `nextMount` command in `/cypress/support/component.js`

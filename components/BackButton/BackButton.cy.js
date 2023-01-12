@@ -27,7 +27,7 @@ describe('<BackButton />', () => {
 
   context('use mock router implementation', () => {
     it('utilizes mock router on click', () => {
-      cy.mountWithRouter(<BackButton />)
+      cy.nextMount(<BackButton />)
 
       cy.get('button').click()
 

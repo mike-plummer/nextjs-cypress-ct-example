@@ -3,25 +3,37 @@ import * as Head from 'next/head'
 import Router from 'next/router'
 
 describe('<HomePage />', () => {
-    beforeEach(() => {
-        cy.stub(Router, 'useRouter').returns({
-            back: cy.stub().as('routerBack'),
-            push: cy.stub().as('routerPush')
+    it('renders', () => {
+        cy.nextMount(<HomePage />)
+    })
+
+    context('with custom HeadManager in mount', () => {
+        it('sends expected content to `head`', () => {
+            cy.nextMount(<HomePage />)
+
+
+            cy.get('@head:updateHead').should('have.been.calledOnce')
+            .and((stub) => {
+                const firstCall = stub.getCall(0)
+                const args = firstCall.args
+
+                const titleElement = args[0].find((el) => el.type === 'title')
+                expect(titleElement).not.to.be.undefined
+                expect(titleElement.props.children).to.equal('Movies')
+            })
         })
     })
 
-    it('renders', () => {
-        cy.mount(<HomePage />)
-    })
+    context('mocking out Head component', () => {
+        it('sends expected content to `head`', () => {
+            cy.spy(Head, 'default').as('head')
+            cy.nextMount(<HomePage />)
 
-    it('sends expected content to `head`', () => {
-        cy.spy(Head, 'default').as('head')
-        cy.mount(<HomePage />)
-
-        cy.get('@head').should('have.been.calledOnce')
-        cy.get('@head').should((spy) => {
-            const headChildContent = spy.getCalls()[0].args[0].children
-            expect(headChildContent.type).to.equal('title')
+            cy.get('@head').should('have.been.calledOnce')
+            cy.get('@head').should((spy) => {
+                const headChildContent = spy.getCalls()[0].args[0].children
+                expect(headChildContent.type).to.equal('title')
+            })
         })
     })
 })

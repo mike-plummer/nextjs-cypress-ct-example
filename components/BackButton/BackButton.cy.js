@@ -14,18 +14,24 @@ describe('<BackButton />', () => {
       cy.stub(Router, 'useRouter').returns(router)
     })
 
-    it('renders', () => {
-      cy.mount(<BackButton />)
-
-      cy.get('button').should('be.visible')
-    })
-
     it('delegates back call to router on click', () => {
       cy.mount(<BackButton />)
 
       cy.get('button').click()
 
       cy.get('@routerBack').should((mock) => {
+        expect(mock).to.have.been.calledOnce
+      })
+    })
+  })
+
+  context('use mock router implementation', () => {
+    it('utilizes mock router on click', () => {
+      cy.mountWithRouter(<BackButton />)
+
+      cy.get('button').click()
+
+      cy.get('@router:back').should((mock) => {
         expect(mock).to.have.been.calledOnce
       })
     })

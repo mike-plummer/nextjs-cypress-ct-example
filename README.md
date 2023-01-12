@@ -8,6 +8,25 @@ Example of using [Cypress](https://www.cypress.io/) with a [Next.js](https://nex
 
 As much application structure is extracted into pure React components - these can be tested using Cypress Component Tests. Component tests are simpler to bootstrap (no server requirement) and help encourage good practices with component design.
 
+### Next Helper Components
+
+#### Image
+
+[`<Image /> example`](./components/Logo/README.md)
+
+#### Head
+
+[`<Head /> example`](./pages/index.cy.js)
+
+#### Script
+
+[`<Script />` example](./components/StateScript/README.md)
+
+#### Router & Link
+
+* [`useRouter` example](./components/BackButton/README.md)
+* [Discussion of how to handle `<Link />`](./components/MovieList/README.md)
+
 ### Pages
 
 Pages are the primary integration point between Next and React and strap metadata, path conventions, and data hooks. These items fall outside the React component itself so they are covered by E2E tests that validate the deployed version of the page.
@@ -18,7 +37,7 @@ Styling is integrated into Next several different ways: global CSS, imported CSS
 
 ### APIs
 
-Next api paths depend on the path being deployed and accessible. To test the actual api path an E2E test must be used. Logic for api paths can be extracted into util modules to allow the business logic of the path to be validated outside of an E2E test.
+Next api paths depend on the path being deployed and accessible. To test the actual api path an E2E test must be used. However, that doesn't mean that component tests can't be used - by extracting as much logic as possible from your API implementation into a utility function you can validate that using a fast component test and rely on a slower E2E test to simply validate the API is properly pathed and accessible.
 
 ### Data Hooks
 
@@ -39,7 +58,7 @@ Next runs code client-side (in the browser) *and* server-side (in the Next node 
 
 The `swc-plugin-coverage-instrument` dependency adds Istanbul instrumentation to the SWC compiler (see `next.config.js`). This, combined with using `nyc` to run the server process, allows us to collect and merge coverage from both locations after tests are complete using the `@cypress/code-coverage` plugin.
 
-1. Launch Next server: `npm run dev:coverage`
+1. Launch Next server: `npm run dev`
 2. Launch Cypress: `npx cypress open`
 3. Run tests
 4. Open coverage report at `coverage/lcov-report/index.html`

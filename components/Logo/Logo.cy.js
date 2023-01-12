@@ -24,6 +24,8 @@ describe('<Logo />', () => {
     const OriginalImageComponent = ImageComponent.default
     
     beforeEach(() => {
+      // This block could be extracted into the component testing support file so
+      // it is applied to all component tests
       Object.defineProperty(ImageComponent, 'default', {
         configurable: true,
         value: props => {

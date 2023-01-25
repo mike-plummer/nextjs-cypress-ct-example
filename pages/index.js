@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.css";
 import { Box, Container, Link, Typography } from "@mui/material";
+import NextLink from 'next/link'
 import { getAll } from "../apis/movies";
 import SearchForm from '../components/SearchForm';
 import { useSearch } from '../hooks/search';
@@ -21,7 +22,7 @@ export default function HomePage(props) {
         <SearchForm onSearch={onSearch} />
       </Box>
 
-      <Link href="/movies/list">List All</Link>
+      <Link component={NextLink} href="/movies/list">List All</Link>
     </Container>
   );
 }

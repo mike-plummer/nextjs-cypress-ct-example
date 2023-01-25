@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import Image from 'next/image'
+import NextLink from 'next/link'
 
 export default function Logo() {
     return (
@@ -8,7 +9,7 @@ export default function Logo() {
             <Typography
                 variant="h6"
                 noWrap
-                component="a"
+                component={NextLink}
                 href="/"
                 sx={{
                     mx: 2,

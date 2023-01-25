@@ -1,6 +1,6 @@
-# Cypress.io with Next.js
+# Cypress.io Component Testing with Next.js
 
-Example of using [Cypress](https://www.cypress.io/) with a [Next.js](https://nextjs.org/) application
+Example of using [Cypress](https://www.cypress.io/) with a [Next.js](https://nextjs.org/) application. This emphasizes Component Testing, but does show some examples of E2E tests to show capabilities that are not ideally tested by component tests (image optimization, routing, etc).
 
 ## Concepts
 
@@ -62,6 +62,12 @@ The `swc-plugin-coverage-instrument` dependency adds Istanbul instrumentation to
 2. Launch Cypress: `npx cypress open`
 3. Run tests
 4. Open coverage report at `coverage/lcov-report/index.html`
+
+## Troubleshooting & Known Issues
+
+* Code Coverage with `/app` directory
+
+Next.js v13 introduced a beta version of the new `/app` directory structure. Unforunately, there is a known issue with the SWC code instrumentation plugin this project is using in combination with the `/app` directory. If you want to experiment with the new directory structure you can simply comment out the `swc-plugin-coverage-instrument` plugin inside `next.config.js`.
 
 ## Acknowledgements
 

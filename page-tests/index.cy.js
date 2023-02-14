@@ -1,4 +1,4 @@
-import HomePage from './index'
+import HomePage from '../pages/index'
 import * as Head from 'next/head'
 import Router from 'next/router'
 
